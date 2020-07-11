@@ -1,4 +1,14 @@
 # Sports-Trivia_Project
+Project Title: Timed Sports Quiz
+Project Description: Basic timed quiz, with Sports related questions
+User Story: Who doesn’t love their sports?  Whether you’re a Hockey Fanatic, Basketball enthusiast or the casual fan, this quiz will be your knowledge to the test.  User will attempt to pass the quiz, but be careful, every wrong answer will deduct time. 
+Wireframe or Sketch of the design: Quiz will be a combination of dynamically responsive questions. These questions will populate using Modals instead of prompts and confirms. Each with time deductions for incorrect answers. Dynamic interfaces. 
+APIs to be Used: Momentjs. FoundatinCDN, Pure
+Rough Breakdown of tasks:
+Miguel: TBD
+Jonathan: TBD
+Bobby: TDB
+Isaiah:TBD
 
 
 # Unit 7: Project 1
