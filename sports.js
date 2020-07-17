@@ -1,5 +1,5 @@
 //* variables that are global on top */
-var questionsObj = [{
+var questionsArr = [{
 	"question": "what is the capital of india?",
 	"options": ["hyderabad", "delhi", "chennai", "bengalore"],
 	"answer": "hyderabad"
@@ -13,7 +13,7 @@ var questionsObj = [{
 var rightAnswers = document.querySelector("rightAnswers");
 // var currentTime = $("<div>").append(currentTime)
 // // var score = {};
-
+var questionList = document.querySelector("#quiz-list");
 // API info NYT
 var queryUrl = ("https://api.nytimes.com/svc/search/v2/articlesearch.json?q=election&api-key=76F4by9ktUvjFKC7kIl7vqi7REdEE6JA");
 ApiKey = "76F4by9ktUvjFKC7kIl7vqi7REdEE6JA";
@@ -47,8 +47,6 @@ var queryUrl5 = ("http://api.sportradar.us/nfl-ot1/seasontd/2018/REG/teams/97354
 
 /* logic functions */
 // questions object appears as page loads
-$(document).ready(displayQuiz);
-
 
 var compareAnswers = {};
 
@@ -56,16 +54,28 @@ var compareAnswers = {};
 
 /* call back functions*/
 // Here we loop through our array using the .each() method and append a new div with each iteration/questions
-function displayQuiz = $("li").each(questionsObj, function(i, rollQuestions) {
-	questionDiv.append("<p>" + rollQuestions + "</p>");
-});
-
+const displayQuiz = function () {
+	// $( "li" ).each(function(index) {
+	// 	for(var i = 0; i < questionsArr.length; i++){
+	// 		questionList.append("<p>" + questionsArr[i] + "</p>");
+	// 		console.log( index + ": " + $( this ).text() );
+	// 	}
+			
+	//   });
+	for(var i = 0; i<questionsArr.length; i++){
+		var liID = "#q" + (i+1);
+		var quizItem = document.querySelector(liID);
+		var question = questionsArr[0].question;
+		console.log(quizItem);
+		quizItem.text(question);
+		questionList.append(quizItem);
+	}
+}
+displayQuiz();
 // function() { };
-displayResults = function() {};
-
-function(scrollStats) {
-	 = $(".nbaStat").on("click", showStats);
-	   $("li").append(json.stringify)
+var displayResults = function (scrollStats) {
+	$(".nbaStat").on("click", showStats);
+	$("li").append(json.stringify)
 
 
 
@@ -81,93 +91,93 @@ function(scrollStats) {
 	}
 	/* event handling functions , all your button clicking*/
 	// event to display questions, scroll stats, display results
-	$(document).ready()
-
-		console.log("works");
 
 
-		$("#nbaStat", "#nflStat", "#mlbStat", "#nhlStat").append("click", function() {
-			console.log("I see you");
-
-			//naming the website which we should use in the ajax
-			queryUrl = ("https://api.nytimes.com/svc/search/v2/articlesearch.json?q=election&api-key=76F4by9ktUvjFKC7kIl7vqi7REdEE6JA");
-			//Pulling the random stats from these websites
-			function showStats() {
-				$.ajax({
-
-						url: queryURL,
-						queryUrl1,
-						queryUrl2,
-						queryUrl3,
-						queryUrl4,
-						queryUrl5,
-						method: "GET"
-					})
-					// Response for the ajax function
-					.then(function(response) {
-						$(".menu").text(JSON.stringify(response));
-
-					});
-			};
+	console.log("works");
 
 
+	$("#nbaStat", "#nflStat", "#mlbStat", "#nhlStat").append("click", function () {
+		console.log("I see you");
 
-
-
-
-
-
-
-		});
-
-		/* psuedo code for quiz
-		the user is presented with prompt for name/email(modal)
-
-		the user is presented with a start button(use modal here)
-
-		the user clicks the start button (use on click function here)
-		$("start").on("click",  function (event) {
-		  event.preventDefault();
-
-
-		  function rollQuestions() {
-		    // console.log(questions);start question display
-		};
-		  // console.log(event);
-		  $("questions-container").append(questions.i)
-		  for (var i = 0; i <questions.length; i++) {}
-
-
-
-		a new page appears with instructions (modal(header)) /Additional button (on click)
-		questions appear(20+) (each show seconds elasped plus actual time) moment js shown here-pulled from espn api
-		if question answer incorrect deduction in time pops next question (if conditional --)(json to missed)
-		if question correct, modal messages, (json to score )
-		quiz continues until either timer elapses or all question answered
-
-		user presented with score /missed data and scroll stats  --*/
-
-		function saveTriviaData() {
+		//naming the website which we should use in the ajax
+		queryUrl = ("https://api.nytimes.com/svc/search/v2/articlesearch.json?q=election&api-key=76F4by9ktUvjFKC7kIl7vqi7REdEE6JA");
+		//Pulling the random stats from these websites
+		function showStats() {
 			$.ajax({
+
 				url: queryURL,
 				queryUrl1,
 				queryUrl2,
 				queryUrl3,
 				queryUrl4,
-				queryUrl5
-			});
-			method: "GET"
-				.then(function(response) {
-					console.log("works")
-					$(".menu").append(JSON.stringify(response));
+				queryUrl5,
+				method: "GET"
+			})
+				// Response for the ajax function
+				.then(function (response) {
+					$(".menu").text(JSON.stringify(response));
 
 				});
-		}
+		};
+
+
+
+
+
+
+
+
+
 	});
+
+	/* psuedo code for quiz
+	the user is presented with prompt for name/email(modal)
+
+	the user is presented with a start button(use modal here)
+
+	the user clicks the start button (use on click function here)
+	$("start").on("click",  function (event) {
+	  event.preventDefault();
+
+
+	  function rollQuestions() {
+		// console.log(questions);start question display
+	};
+	  // console.log(event);
+	  $("questions-container").append(questions.i)
+	  for (var i = 0; i <questions.length; i++) {}
+
+
+
+	a new page appears with instructions (modal(header)) /Additional button (on click)
+	questions appear(20+) (each show seconds elasped plus actual time) moment js shown here-pulled from espn api
+	if question answer incorrect deduction in time pops next question (if conditional --)(json to missed)
+	if question correct, modal messages, (json to score )
+	quiz continues until either timer elapses or all question answered
+
+	user presented with score /missed data and scroll stats  --*/
+
+	function saveTriviaData() {
+		$.ajax({
+			url: queryURL,
+			queryUrl1,
+			queryUrl2,
+			queryUrl3,
+			queryUrl4,
+			queryUrl5
+		});
+		method: "GET"
+			.then(function (response) {
+				console.log("works")
+				$(".menu").append(JSON.stringify(response));
+
+			});
+	}
+};
 
 	// rollQuestions
 
 
 
 	// }}
-}
+
