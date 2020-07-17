@@ -76,7 +76,7 @@ displayQuiz();
 var displayResults = function (scrollStats) {
 	$(".nbaStat").on("click", showStats);
 	$("li").append(json.stringify)
-
+/
 
 
 	function rollQuestions() {
