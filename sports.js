@@ -67,25 +67,15 @@ displayQuiz();
 // function() { };
 var displayResults = function (scrollStats) {
 	$(".nbaStat").on("click", showStats);
-	$("li").append(json.stringify)
-		/
+
+	$("div").append(json.stringify)
+		
 
 
-		function rollQuestions() {
-			// console.log(questions);start question display
-		}
-	// console.log(event);
-	$("li").append(questionsObj[i]);
-	for (var i = 0; i < questionsObj.length; i++) {
-		console.log(questionsObj[i].q);
-
-		$('li').append(questionsObj[i].q);
 	}
 	/* event handling functions , all your button clicking*/
 	// event to display questions, scroll stats, display results
 
-
-	console.log("works");
 
 
 	$("#nbaStat", "#nflStat", "#mlbStat", "#nhlStat").append("click", function () {
@@ -107,48 +97,13 @@ var displayResults = function (scrollStats) {
 			})
 				// Response for the ajax function
 				.then(function (response) {
-					$(".menu").text(JSON.stringify(response));
+					
+					$( ".stat" ).append(JSON.stringify(response));
 
 				});
 		};
 
-
-
-
-
-
-
-
-
 	});
-
-	/* psuedo code for quiz
-	the user is presented with prompt for name/email(modal)
-
-	the user is presented with a start button(use modal here)
-
-	the user clicks the start button (use on click function here)
-	$("start").on("click",  function (event) {
-	  event.preventDefault();
-
-
-	  function rollQuestions() {
-		// console.log(questions);start question display
-	};
-	  // console.log(event);
-	  $("questions-container").append(questions.i)
-	  for (var i = 0; i <questions.length; i++) {}
-
-
-
-	a new page appears with instructions (modal(header)) /Additional button (on click)
-	questions appear(20+) (each show seconds elasped plus actual time) moment js shown here-pulled from espn api
-	if question answer incorrect deduction in time pops next question (if conditional --)(json to missed)
-	if question correct, modal messages, (json to score )
-	quiz continues until either timer elapses or all question answered
-
-	user presented with score /missed data and scroll stats  --*/
-
 	function saveTriviaData() {
 		$.ajax({
 			url: queryURL,
@@ -165,11 +120,7 @@ var displayResults = function (scrollStats) {
 
 			});
 	}
-};
+;
 
-	// rollQuestions
-
-
-
-	// }}
+	
 
