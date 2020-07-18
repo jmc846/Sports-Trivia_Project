@@ -1,16 +1,9 @@
 //* variables that are global on top */
-var questionsArr = [{
-	"question": "Who currently leads the NBA in assists? a- russel westbrook, b- lebron james, c- kyrie Irving"},{ "question": "Who curently leads the nba in points  PPG?", }, { "question": "Who currently leads the NBA in rebounds with over 15 per game?", },{ "question": "What team is currently in first place in the Eastern Division of the NBA?", },{ "question": "The New York Knicks will win a playoff series within the next 10 years?", }]
-// "options": [ "a- russel westbrook", "b- lebron james", "c- kyrie Irving"],
-
-// "options": [ "a -Bradley beal", "b - Lebron James", "c- James Harden",],
-
-// "options":[ "a- Andre Drummond"," b- Gianis"," c- Anthony Davis",],
-
-// "options":[ "a-Raptors","b-Milwaukee Bucks", "c-Boston Celtics",],
-
-// "options":[ "a -True", "b -False"],
-
+var questionsArr = [{"question": "Who currently leads the NBA in assists? a- russel westbrook, b- lebron james, c- kyrie Irving"}, 
+	{ "question": "Who curently leads the nba in points  PPG? a -Bradley beal, b - Lebron James, c- James Harden" },
+ { "question": "Who currently leads the NBA in rebounds with over 15 per game? a- Andre Drummond,  b- Gianis,  c- Anthony Davis" }, 
+ { "question": "What team is currently in first place in the Eastern Division of the NBA? a-Raptors, b-Milwaukee Bucks, c-Boston Celtics" },
+  { "question": "The New York Knicks will win a playoff series within the next 10 years? a -True, b -False" }]
 
 
 // var answerChoices = [{}];
@@ -73,23 +66,23 @@ const displayQuiz = function () {
 displayQuiz();
 // function() { };
 var displayResults = function (scrollStats) {
-	$(".nbaStat").on("click", showStats);
+	$(".nbaStat").on("click", );
 	$("li").append(json.stringify)
 		/
 
 
-		function rollQuestions() {
-			// console.log(questions);start question display
-		}
-	// console.log(event);
-	$("li").append(questionsObj[i]);
-	for (var i = 0; i < questionsObj.length; i++) {
-		console.log(questionsObj[i].q);
+	// 	function rollQuestions() {
+	// 		// console.log(questions);start question display
+	// 	}
+	// // console.log(event);
+	// $("li").append(questionsObj[i]);
+	// for (var i = 0; i < questionsObj.length; i++) {
+	// 	console.log(questionsObj[i].q);
 
-		$('li').append(questionsObj[i].q);
-	}
-	/* event handling functions , all your button clicking*/
-	// event to display questions, scroll stats, display results
+	// 	$('li').append(questionsObj[i].q);
+	// }
+	// /* event handling functions , all your button clicking*/
+	// // event to display questions, scroll stats, display results
 
 
 	console.log("works");
@@ -119,7 +112,8 @@ var displayResults = function (scrollStats) {
 				});
 		};
 
-
+	}).then(function(response) {
+		$("#btn btn-primary").text(JSON.stringify(response))
 
 
 
