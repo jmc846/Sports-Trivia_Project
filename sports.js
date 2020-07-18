@@ -1,19 +1,24 @@
 //* variables that are global on top */
 var questionsArr = [{
-	"question": "what is the capital of india?",
-	"options": ["hyderabad", "delhi", "chennai", "bengalore"],
-	"answer": "hyderabad"
-}, {
-	"question": "what is even number?",
-	"options": [1, 3, 5, 8],
-	"answer": 8
-}];
+	"question": "Who currently leads the NBA in assists? a- russel westbrook, b- lebron james, c- kyrie Irving"},{ "question": "Who curently leads the nba in points  PPG?", }, { "question": "Who currently leads the NBA in rebounds with over 15 per game?", },{ "question": "What team is currently in first place in the Eastern Division of the NBA?", },{ "question": "The New York Knicks will win a playoff series within the next 10 years?", }]
+// "options": [ "a- russel westbrook", "b- lebron james", "c- kyrie Irving"],
+
+// "options": [ "a -Bradley beal", "b - Lebron James", "c- James Harden",],
+
+// "options":[ "a- Andre Drummond"," b- Gianis"," c- Anthony Davis",],
+
+// "options":[ "a-Raptors","b-Milwaukee Bucks", "c-Boston Celtics",],
+
+// "options":[ "a -True", "b -False"],
+
+
+
 // var answerChoices = [{}];
 // var answerSelected = document.querySelector$(onclick)
-var rightAnswers = document.querySelector("rightAnswers");
+var rightAnswers = $(".rightAnswers");
 // var currentTime = $("<div>").append(currentTime)
 // // var score = {};
-var questionList = document.querySelector("#quiz-list");
+var questionList = $("#quiz-list");
 // API info NYT
 var queryUrl = ("https://api.nytimes.com/svc/search/v2/articlesearch.json?q=election&api-key=76F4by9ktUvjFKC7kIl7vqi7REdEE6JA");
 ApiKey = "76F4by9ktUvjFKC7kIl7vqi7REdEE6JA";
@@ -55,17 +60,11 @@ var compareAnswers = {};
 /* call back functions*/
 // Here we loop through our array using the .each() method and append a new div with each iteration/questions
 const displayQuiz = function () {
-	// $( "li" ).each(function(index) {
-	// 	for(var i = 0; i < questionsArr.length; i++){
-	// 		questionList.append("<p>" + questionsArr[i] + "</p>");
-	// 		console.log( index + ": " + $( this ).text() );
-	// 	}
-			
-	//   });
-	for(var i = 0; i<questionsArr.length; i++){
-		var liID = "#q" + (i+1);
-		var quizItem = document.querySelector(liID);
-		var question = questionsArr[0].question;
+
+	for (var i = 0; i < questionsArr.length; i++) {
+		var divID = "#q" + (i + 1);
+		var quizItem = $(divID);
+		var question = questionsArr[i].question;
 		console.log(quizItem);
 		quizItem.text(question);
 		questionList.append(quizItem);
@@ -76,12 +75,12 @@ displayQuiz();
 var displayResults = function (scrollStats) {
 	$(".nbaStat").on("click", showStats);
 	$("li").append(json.stringify)
-/
+		/
 
 
-	function rollQuestions() {
-		// console.log(questions);start question display
-	}
+		function rollQuestions() {
+			// console.log(questions);start question display
+		}
 	// console.log(event);
 	$("li").append(questionsObj[i]);
 	for (var i = 0; i < questionsObj.length; i++) {
