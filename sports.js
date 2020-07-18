@@ -66,23 +66,23 @@ const displayQuiz = function () {
 displayQuiz();
 // function() { };
 var displayResults = function (scrollStats) {
-	$(".nbaStat").on("click", );
+	$(".nbaStat").on("click", showStats);
 	$("li").append(json.stringify)
 		/
 
 
-	// 	function rollQuestions() {
-	// 		// console.log(questions);start question display
-	// 	}
-	// // console.log(event);
-	// $("li").append(questionsObj[i]);
-	// for (var i = 0; i < questionsObj.length; i++) {
-	// 	console.log(questionsObj[i].q);
+		function rollQuestions() {
+			// console.log(questions);start question display
+		}
+	// console.log(event);
+	$("li").append(questionsObj[i]);
+	for (var i = 0; i < questionsObj.length; i++) {
+		console.log(questionsObj[i].q);
 
-	// 	$('li').append(questionsObj[i].q);
-	// }
-	// /* event handling functions , all your button clicking*/
-	// // event to display questions, scroll stats, display results
+		$('li').append(questionsObj[i].q);
+	}
+	/* event handling functions , all your button clicking*/
+	// event to display questions, scroll stats, display results
 
 
 	console.log("works");
@@ -112,8 +112,7 @@ var displayResults = function (scrollStats) {
 				});
 		};
 
-	}).then(function(response) {
-		$("#btn btn-primary").text(JSON.stringify(response))
+
 
 
 
