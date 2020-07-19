@@ -1,9 +1,9 @@
 //* variables that are global on top */
-var questionsArr = [{"question": "Who currently leads the NBA in assists? a- russel westbrook, b- lebron james, c- kyrie Irving"}, 
-	{ "question": "Who curently leads the nba in points  PPG? a -Bradley beal, b - Lebron James, c- James Harden" },
- { "question": "Who currently leads the NBA in rebounds with over 15 per game? a- Andre Drummond,  b- Gianis,  c- Anthony Davis" }, 
- { "question": "What team is currently in first place in the Eastern Division of the NBA? a-Raptors, b-Milwaukee Bucks, c-Boston Celtics" },
-  { "question": "The New York Knicks will win a playoff series within the next 10 years? a -True, b -False" }]
+var questionsArr = [{ "question": "Who currently leads the NBA in assists? a- russel westbrook, b- lebron james, c- kyrie Irving" },
+{ "question": "Who curently leads the nba in points  PPG? a -Bradley beal, b - Lebron James, c- James Harden" },
+{ "question": "Who currently leads the NBA in rebounds with over 15 per game? a- Andre Drummond,  b- Gianis,  c- Anthony Davis" },
+{ "question": "What team is currently in first place in the Eastern Division of the NBA? a-Raptors, b-Milwaukee Bucks, c-Boston Celtics" },
+{ "question": "The New York Knicks will win a playoff series within the next 10 years? a -True, b -False" }]
 
 
 // var answerChoices = [{}];
@@ -47,9 +47,26 @@ var queryUrl5 = ("http://api.sportradar.us/nfl-ot1/seasontd/2018/REG/teams/97354
 // questions object appears as page loads
 
 var compareAnswers = {};
+var responseData ;
+function showStats() {
+	$.ajax({
 
+		url: queryURL,
+		// queryUrl1,
+		// queryUrl2,
+		// queryUrl3,
+		// queryUrl4,
+		// queryUrl5,
+		method: "GET"
+	})
+		// Response for the ajax function
+		.then(function (response) {
+console.log(response)
+			$(".stat").on(JSON.stringify(response));
 
-
+		});
+};
+showStats ()
 /* call back functions*/
 // Here we loop through our array using the .each() method and append a new div with each iteration/questions
 const displayQuiz = function () {
@@ -63,113 +80,45 @@ const displayQuiz = function () {
 		questionList.append(quizItem);
 	}
 }
-displayQuiz();
-// function() { };
-var displayResults = function (scrollStats) {
-	$(".nbaStat").on("click", showStats);
-	$("li").append(json.stringify)
-		/
 
+$(".nbaStat").on("click", showStats);
 
-		function rollQuestions() {
-			// console.log(questions);start question display
-		}
-	// console.log(event);
-	$("li").append(questionsObj[i]);
-	for (var i = 0; i < questionsObj.length; i++) {
-		console.log(questionsObj[i].q);
-
-		$('li').append(questionsObj[i].q);
-	}
-	/* event handling functions , all your button clicking*/
-	// event to display questions, scroll stats, display results
-
-
-	console.log("works");
-
-
-	$("#nbaStat", "#nflStat", "#mlbStat", "#nhlStat").append("click", function () {
-		console.log("I see you");
-
-		//naming the website which we should use in the ajax
-		queryUrl = ("https://api.nytimes.com/svc/search/v2/articlesearch.json?q=election&api-key=76F4by9ktUvjFKC7kIl7vqi7REdEE6JA");
-		//Pulling the random stats from these websites
-		function showStats() {
-			$.ajax({
-
-				url: queryURL,
-				queryUrl1,
-				queryUrl2,
-				queryUrl3,
-				queryUrl4,
-				queryUrl5,
-				method: "GET"
-			})
-				// Response for the ajax function
-				.then(function (response) {
-					$(".menu").text(JSON.stringify(response));
-
-				});
-		};
+$("div").append(json.stringify)
 
 
 
 
+/* event handling functions , all your button clicking*/
+// event to display questions, scroll stats, display results
 
 
 
+$("#nbaStat", "#nflStat", "#mlbStat", "#nhlStat").append("click", function () {
+	console.log("I see you");
 
+	//naming the website which we should use in the ajax
+	queryUrl = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=election&api-key=76F4by9ktUvjFKC7kIl7vqi7REdEE6JA";
+	//Pulling the random stats from these websites
+	
 
+});
+function saveTriviaData() {
+	$.ajax({
+		url: queryURL,
+		queryUrl1,
+		queryUrl2,
+		queryUrl3,
+		queryUrl4,
+		queryUrl5
 	});
+	method: "GET"
+		.then(function (response) {
+			console.log("works")
+			$(".menu").append(JSON.stringify(response));
 
-	/* psuedo code for quiz
-	the user is presented with prompt for name/email(modal)
-
-	the user is presented with a start button(use modal here)
-
-	the user clicks the start button (use on click function here)
-	$("start").on("click",  function (event) {
-	  event.preventDefault();
-
-
-	  function rollQuestions() {
-		// console.log(questions);start question display
-	};
-	  // console.log(event);
-	  $("questions-container").append(questions.i)
-	  for (var i = 0; i <questions.length; i++) {}
-
-
-
-	a new page appears with instructions (modal(header)) /Additional button (on click)
-	questions appear(20+) (each show seconds elasped plus actual time) moment js shown here-pulled from espn api
-	if question answer incorrect deduction in time pops next question (if conditional --)(json to missed)
-	if question correct, modal messages, (json to score )
-	quiz continues until either timer elapses or all question answered
-
-	user presented with score /missed data and scroll stats  --*/
-
-	function saveTriviaData() {
-		$.ajax({
-			url: queryURL,
-			queryUrl1,
-			queryUrl2,
-			queryUrl3,
-			queryUrl4,
-			queryUrl5
 		});
-		method: "GET"
-			.then(function (response) {
-				console.log("works")
-				$(".menu").append(JSON.stringify(response));
-
-			});
-	}
-};
-
-	// rollQuestions
+}
+;
 
 
-
-	// }}
 
