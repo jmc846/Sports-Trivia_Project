@@ -11,6 +11,10 @@ var questionsArr = [{ "question": "Who currently leads the NBA in assists? a- ru
 var rightAnswers = $(".rightAnswers");
 // var currentTime = $("<div>").append(currentTime)
 // // var score = {};
+var nbaStat = document.getElementById("nbaStat");
+var nflStat = document.getElementById("nflStat");
+var mlbStat = document.getElementById("mlbStat");
+var nhlStat = document.getElementById("nhlStat");
 var questionList = $("#quiz-list");
 // API info NYT
 var queryUrl = ("https://api.nytimes.com/svc/search/v2/articlesearch.json?q=election&api-key=76F4by9ktUvjFKC7kIl7vqi7REdEE6JA");
@@ -58,13 +62,13 @@ function showStats() {
 		// queryUrl4,
 		// queryUrl5,
 		method: "GET"
-	})
+	});
 		// Response for the ajax function
 		.then(function (response) {
 console.log(response)
 			$(".stat").on(JSON.stringify(response));
 
-		});
+		})
 };
 showStats ()
 /* call back functions*/
@@ -81,9 +85,14 @@ const displayQuiz = function () {
 	}
 }
 
-$(".nbaStat").on("click", showStats);
+document.getElementById("nbaStat").on("click",saveTriviaData);
 
-$("div").append(json.stringify)
+
+document.getElementById("nflStat").on("click",saveTriviaData)
+
+document.getElementById("mlbStat").on("click",saveTriviaData)
+
+document.getElementById("nblStat").on("click",saveTriviaData)
 
 
 
@@ -114,7 +123,7 @@ function saveTriviaData() {
 	method: "GET"
 		.then(function (response) {
 			console.log("works")
-			$(".menu").append(JSON.stringify(response));
+			$("<div>").append(JSON.stringify(response));
 
 		});
 }
