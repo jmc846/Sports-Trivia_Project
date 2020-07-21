@@ -6,6 +6,7 @@
     <title>Sports Code Trivia page and Statistics </title>
     <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src="Assets/json/nba.js" defer></script>
   </head>
   <body>
 <style>
@@ -42,12 +43,18 @@
   <!-- Sub Navigation -->
   <div class="top-bar">
     <div class="top-bar-left">
-      <ul class="menu">
-        <li><a href="#" id = "nbaStat">NBA Stats</a></li>
-        <li><a href="#" id = "nflStat">NFL Stats</a></li>
+      <!-- <div id="nbaStat" class="sports-stat" data-stat="nba"></div>
+  <div id="mlbStat" class="sports-stat" data-stat="mlb"></div>
+  <div id="nflStat" class="sports-stat" data-stat="nfl"></div>
+  <div id="nhlStat" class="sports-stat" data-stat="nhl"></div>
+  <div id="ncaambStat" class="sports-stat" data-stat="ncaambStat"></div>
+  <div id="ncaafbStat" class="sports-stat" data-stat="ncaafbStat"></div> -->
+       <ul class="menu">
+        <li id="nbaStat" class="sports-stat" data-stat="nba"><a href="#">NBA Stats</a></li>
+        <li  id="mlbStat" class="sports-stat" data-stat="mlb"><a href="#">MLBM Stats</a></li>
         <li><a href="#" id = "mlbStat">MLB Stats</a></li>
         <li><a href="#" id = "nhlStat">NHL Stats</a></li>
-      </ul>
+      </ul> 
     </div>
     <div class="top-bar-right">
       <ul class="menu">
@@ -71,12 +78,7 @@
   </div>
   <!-- / logo and ad break -->
 
-  <div id="stat"></div>
-  <div id=""></div>
-  <div id = ""></div>
-  <div id = ""></div>
-  <div id = ""></div>
-  <div id = ""></div>
+  
 
 
   <br>
