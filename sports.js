@@ -60,6 +60,9 @@ function showStats(queryURL) {
 		// Response for the ajax function
 		.then(function (response) {
 			var res = resNBA; 
+			console.log("res: ", res)
+			console.log("response.name: ", res.name);
+			document.querySelector("statistics").append(res.name);
 			
 
 			console.log(res.id);
@@ -82,8 +85,8 @@ const displayQuiz = function () {
 		var quizItem = $(divID);
 		var questionList = questionsArr[i].question;
 		console.log(quizItem);
-		quizItem.text(question);
-		questionList.text(quizItem);
+		quizItem.append(questionList);
+		
 	}
 }
 displayQuiz();
@@ -118,7 +121,8 @@ function saveTriviaData() {
 	$("<div>").append(resNBA.players)
 	
 			console.log("works")
-			$("div").append(JSON.stringify(response));
+			$("<div>").append(JSON.stringify(response));
+			$("<button>").append(JSON.stringify(response));
 
 		};
 
