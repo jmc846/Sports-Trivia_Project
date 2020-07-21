@@ -1,21 +1,16 @@
 //* variables that are global on top */
-var questionsArr = [{ "question": "Who currently leads the NBA in assists? a- russel westbrook, b- lebron james, c- kyrie Irving" },
-{ "question": "Who curently leads the nba in points  PPG? a -Bradley beal, b - Lebron James, c- James Harden" },
-{ "question": "Who currently leads the NBA in rebounds with over 15 per game? a- Andre Drummond,  b- Gianis,  c- Anthony Davis" },
-{ "question": "What team is currently in first place in the Eastern Division of the NBA? a-Raptors, b-Milwaukee Bucks, c-Boston Celtics" },
-{ "question": "The New York Knicks will win a playoff series within the next 10 years? a -True, b -False" }]
+var questionsArr = [{ question: "Who currently leads the NBA in assists? a- russel westbrook, b- lebron james, c- kyrie Irving" },
+{ question: "Who curently leads the nba in points  PPG? a -Bradley beal, b - Lebron James, c- James Harden" },
+{ question: "Who currently leads the NBA in rebounds with over 15 per game? a- Andre Drummond,  b- Gianis,  c- Anthony Davis" },
+{ question: "What team is currently in first place in the Eastern Division of the NBA? a-Raptors, b-Milwaukee Bucks, c-Boston Celtics" },
+{ question: "The New York Knicks will win a playoff series within the next 10 years? a -True, b -False" }]
 
 
 // var answerChoices = [{}];
 // var answerSelected = document.querySelector$(onclick)
 var rightAnswers = $(".rightAnswers");
-// var currentTime = $("<div>").append(currentTime)
-// // var score = {};
-var nbaStat = document.getElementById("nbaStat");
-var nflStat = document.getElementById("nflStat");
-var mlbStat = document.getElementById("mlbStat");
-var nhlStat = document.getElementById("nhlStat");
-var questionList = $("#quiz-list");
+ var currentTime = $("<div>").append(currentTime)
+
 // API info NYT
 var queryUrl = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=election&api-key=76F4by9ktUvjFKC7kIl7vqi7REdEE6JA";
 ApiKey = "76F4by9ktUvjFKC7kIl7vqi7REdEE6JA";
@@ -25,7 +20,7 @@ AppId = "e12869a3-d720-4808-8150-476679bf0862";
 // MLB Trial
 // Sports Trivia and Statistics
 // Key: a46agsaangqu3rr7st7fze3j
-var mlbSat = "https://api.sportradar.us/mlb/trial/v6.6/en/seasons/2019/REG/teams/aa34e0ed-f342-4ec6-b774-c79b47b60e2d/statistics.json?api_key=a46agsaangqu3rr7st7fze3j";
+var mlbStat = "https://api.sportradar.us/mlb/trial/v6.6/en/seasons/2019/REG/teams/aa34e0ed-f342-4ec6-b774-c79b47b60e2d/statistics.json?api_key=a46agsaangqu3rr7st7fze3j";
 
 // NBA Trial
 // Sports Trivia and Statistics
@@ -52,7 +47,7 @@ var nflStat = "https://api.sportradar.us/nfl-ot1/seasontd/2018/REG/teams/9735489
 var compareAnswers = {};
 // var responseData;
 function showStats(queryURL) {
-	var params = {};
+	var params = {mlbStat, nbaStat, ncaafbStat, nflStat};
 	params.target = queryUrl;
 
 
@@ -64,10 +59,12 @@ function showStats(queryURL) {
 	})
 		// Response for the ajax function
 		.then(function (response) {
-			var res = resNBA;
+			var res = resNBA; 
+			
+
 			console.log(res.id);
 
-			console.log("above is responcse");
+			console.log("above is response");
 
 		}
 		);
@@ -81,32 +78,18 @@ function showStats(queryURL) {
 const displayQuiz = function () {
 
 	for (var i = 0; i < questionsArr.length; i++) {
-		var divID = "#q" + (i + 1);
+		var divID = "q" + (i + 1);
 		var quizItem = $(divID);
-		var question = questionsArr[i].question;
+		var questionList = questionsArr[i].question;
 		console.log(quizItem);
 		quizItem.text(question);
 		questionList.text(quizItem);
 	}
 }
-
-//document.getElementById("nbaStat").on("click", saveTriviaData);
-
-
-// document.getElementById("nflStat").on("click", saveTriviaData)
-
-// document.getElementById("mlbStat").on("click", saveTriviaData)
-
-// document.getElementById("nblStat").on("click", saveTriviaData)
-
-
-
+displayQuiz();
 
 /* event handling functions , all your button clicking*/
 // event to display questions, scroll stats, display results
-
-
-
 $(".sports-stat").on("click", function () {
 	
 	
@@ -121,28 +104,24 @@ $(".sports-stat").on("click", function () {
 		case 'nba':
 			showStats(nbaStat)
 			break;
+			case 'nfl':
+				showStats(nflStat)
+				break;
+				case 'ncaafb':
+				showStats(ncaafbStat)
+				break;
 		default:
 			console.log("try again");
 			}
-
-	//naming the website which we should use in the ajax
-	//queryUrl = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=election&api-key=76F4by9ktUvjFKC7kIl7vqi7REdEE6JA";
-	//Pulling the random stats from these websites
-
-
 });
 function saveTriviaData() {
-	$.ajax({
-		url: queryURL,
-
-		method: "GET",
-	})
-		.then(function (response) {
+	$("<div>").append(resNBA.players)
+	
 			console.log("works")
 			$("div").append(JSON.stringify(response));
 
-		});
-}
+		};
+
 
 
 
