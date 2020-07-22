@@ -33,3 +33,22 @@ background: url(https://www.pexels.com/video/aerial-footage-of-a-football-stadiu
     padding: 20px;
     margin-left: 800px;
   }
+  .fangraphs-image {
+    height: 200px;
+  }
+  .iframe-container{
+    position: relative;
+    width: 90%;
+    padding-bottom: 25%; 
+    height: 0;
+    right: 200px
+  }
+  .iframe-container iframe{
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 90%;
+    height: 100%;
+  }
+  
+    
