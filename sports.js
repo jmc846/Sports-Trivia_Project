@@ -4,10 +4,10 @@ var questionsArr = [{ question: "Who currently leads the NBA in assists? a- russ
 { question: "Who currently leads the NBA in rebounds with over 15 per game? a- Andre Drummond,  b- Gianis,  c- Anthony Davis" },
 { question: "What team is currently in first place in the Eastern Division of the NBA? a-Raptors, b-Milwaukee Bucks, c-Boston Celtics" },
 { question: "The New York Knicks will win a playoff series within the next 10 years? a -True, b -False" }]
-
-
-// var answerChoices = [{}];
-// var answerSelected = document.querySelector$(onclick)
+var resNBA= document.querySelector('resNBA');
+var resNFL = document.querySelector('resNFL');
+var resMLB= document.querySelector('resMLB');
+var resNCAAFB= document.querySelector('resNCAAFB');
 var rightAnswers = $(".rightAnswers");
  var currentTime = $("<div>").append(currentTime)
 
@@ -59,32 +59,22 @@ function showStats(queryURL) {
 	})
 		// Response for the ajax function
 		.then(function (response) {
-			var res = resNBA; 
-			console.log("res: ", res);
-			console.log("response.name: ", (res.name));
-			document.querySelector("#statistics").append("Team",res.name)
 			
-
-			console.log(res.name)
-
 			console.log("above is response");
 		}
 		);
 	}
-
-// appending or add in showStats
-// showStats() =;
-// var queryUrl=> (mlbUrl, parameter2)
 /* call back functions*/
 // Here we loop through our array using the .each() method and append a new div with each iteration/questions
 const displayQuiz = function () {
 
 	for (var i = 0; i < questionsArr.length; i++) {
-		var divID = "q" + (i + 1);
+		var divID = "#q" + (i + 1);
 		var quizItem = $(divID);
 		var questionList = questionsArr[i].question;
-		console.log(quizItem);
-		quizItem.append(questionList);
+		console.log(questionList);
+		document.querySelector("#quizitem").append(questionList)
+	
 		
 	}
 }
@@ -104,31 +94,31 @@ $(".sports-stat").on("click", function () {
 		case 'nba':
 			if (document.getElementById(".nbaStat"),showStats(nbaStat))
 			showStats(nbaStat)
+			document.querySelector("#nbastatistics").append("Team",resNBA)
+		    console.log(queryUrl)
 			break;
 		case 'mlb':
 			if (document.getElementById(".mlbStat"),showStats(mlbStat))
 			showStats(mlbStat)
-		// 	break;	
-		// 	case 'nfl':
-		// 		if (document.getElementById(".nflStat"),showStats(nflStat))
-		// 		showStats(nflStat)
-		// 		break;
-		// 		case 'ncaafb':
-		// 			if (document.getElementById(".ncaafbStat"),showStats(ncaafbStat))
-		// 		showStats(ncaafbStat)
-		// 		break;
-		// default:
+			document.querySelector("#mlbstatistics").append("Team",resMLB)
+			break;	
+		 	case 'nfl':
+				if (document.getElementById(".nflStat"),showStats(nflStat))
+				showStats(nflStat)
+				document.querySelector("#nflstatistics").append("Team",resNFL)
+				break;
+				case 'ncaafb':
+					if (document.getElementById(".ncaafbStat"),showStats(ncaafbStat))
+				 showStats(ncaafbStat)
+				 document.querySelector("#ncaafbstatistics").append("Team",resNCAAFB)
+		 		break;
+		 default:
 			console.log("try again");
 			}
 });
-function saveTriviaData() {
-	$("<div>").append(resNBA.players)
-	
-			console.log("works")
-		
-			$("<button>").append(JSON.stringify(response));
 
-		};
+
+		
 
 
 
