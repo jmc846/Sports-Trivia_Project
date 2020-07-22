@@ -60,18 +60,17 @@ function showStats(queryURL) {
 		// Response for the ajax function
 		.then(function (response) {
 			var res = resNBA; 
-			console.log("res: ", res)
-			console.log("response.name: ", res.name);
-			document.querySelector("statistics").append(res.name);
+			console.log("res: ", res);
+			console.log("response.name: ", (res.name));
+			document.querySelector("#statistics").append("Team",res.name)
 			
 
-			console.log(res.id);
+			console.log(res.name)
 
 			console.log("above is response");
-
 		}
 		);
-}
+	}
 
 // appending or add in showStats
 // showStats() =;
@@ -101,19 +100,24 @@ $(".sports-stat").on("click", function () {
 	//switch()
 	console.log("I see you");
 	switch(sport){
-		case 'mlb':
-			showStats(mlbStat)
-			break;
+
 		case 'nba':
+			if (document.getElementById(".nbaStat"),showStats(nbaStat))
 			showStats(nbaStat)
 			break;
-			case 'nfl':
-				showStats(nflStat)
-				break;
-				case 'ncaafb':
-				showStats(ncaafbStat)
-				break;
-		default:
+		case 'mlb':
+			if (document.getElementById(".mlbStat"),showStats(mlbStat))
+			showStats(mlbStat)
+		// 	break;	
+		// 	case 'nfl':
+		// 		if (document.getElementById(".nflStat"),showStats(nflStat))
+		// 		showStats(nflStat)
+		// 		break;
+		// 		case 'ncaafb':
+		// 			if (document.getElementById(".ncaafbStat"),showStats(ncaafbStat))
+		// 		showStats(ncaafbStat)
+		// 		break;
+		// default:
 			console.log("try again");
 			}
 });
@@ -121,7 +125,7 @@ function saveTriviaData() {
 	$("<div>").append(resNBA.players)
 	
 			console.log("works")
-			$("<div>").append(JSON.stringify(response));
+		
 			$("<button>").append(JSON.stringify(response));
 
 		};
