@@ -1,4 +1,4 @@
-resMLB ={
+resMLB = {
     "name": "Twins",
     "market": "Minnesota",
     "abbr": "MIN",
