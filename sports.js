@@ -54,44 +54,26 @@ var nflStat = "https://api.sportradar.us/nfl-ot1/seasontd/2018/REG/teams/9735489
 
 var compareAnswers = {};
 // var responseData;
-// function showStats(queryURL) {
-// 	var params = {
-// 		mlbStat,
-// 		nbaStat,
-// 		ncaafbStat,
-// 		nflStat
-// 	};
-// 	params.target = queryUrl;
+ function showStats(queryURL) {
+ 	var params = {
+		mlbStat,
+ 		nbaStat,
+ 		ncaafbStat,
+ 		nflStat
+ 	};
+ 	params.target = queryUrl;
 
 
-// 	console.log("queryURL", queryURL)
-// 	$.ajax({
-
-// 			url: "https://greve-chaise-90856.herokuapp.com/proxy/api/v1?" + $.param(params),
-// 			method: "GET",
-// 		})
-// 		// Response for the ajax function
-// 		.then(function (response) {
-
-// 			console.log("above is response");
-// 		});
-// }
-/* call back functions*/
-// Here we loop through our array using the .each() method and append a new div with each iteration/questions
-// const displayQuiz = function () {
-
-// 	for (var i = 0; i < questionsArr.length; i++) {
-// 		var divID = "#q" + (i + 1);
-// 		var quizItem = $(divID);
-// 		var questionList = questionsArr[i].question;
-// 		console.log(questionList);
-// 		// document.querySelector("#quizitem").append(questionList)
-
-
-// 	}
-// }
-// displayQuiz();
-
+ 	console.log("queryURL", queryURL)
+ 	$.ajax({
+ 			url: "https://greve-chaise-90856.herokuapp.com/proxy/api/v1?" + $.param(params),
+ 			method: "GET",
+ 		})
+ 		// Response for the ajax function
+ 		.then(function (response) {
+ 			console.log("above is response");
+ 		});
+ }
 /* event handling functions , all your button clicking*/
 // event to display questions, scroll stats, display results
 $(".sports-stat").on("click", function () {
@@ -104,7 +86,7 @@ $(".sports-stat").on("click", function () {
 	switch (sport) {
 
 		case 'nba':
-			// showStats(resNBA);
+			 showStats(resNBA);
 			console.log(resNBA.players[1].full_name);
 			for(let i = 1; i < 4; i++){
 				let playerID = "#td" +i + "-player-name";
@@ -117,10 +99,18 @@ $(".sports-stat").on("click", function () {
 			
 			//console.log(queryUrl)
 			break;
-		// case 'mlb':
-		// 	if (document.getElementById(".mlbStat"), showStats(mlbStat))
-		// 		showStats(mlbStat)
-		// 	document.querySelector("#mlbstatistics").append("Team", resMLB)
+		case 'mlb':
+			showStats(resMLB);
+			console.log(resMLB.players[1].full_name);
+			for(let i = 1; i < 4; i++){
+				let playerID = "#td" +i + "-player-name";
+				let teamID = "#td" + i + "-team";
+				let posID = "#td" + i + "-pos"
+				$(playerID).text(resMLB.players[i].full_name);
+				$(teamID).text(resMLB.name);
+				$(posID).text(resMLB.players[i].primary_position);
+			}
+			
 		// 	break;
 		// case 'nfl':
 
@@ -135,4 +125,4 @@ $(".sports-stat").on("click", function () {
 		default:
 			console.log("try again");
 	}
-});
+})
