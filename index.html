@@ -1,126 +1,41 @@
-<!doctype html>
-<html class="no-js" lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sports Code Trivia page and Statistics </title>
-    <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <script src="Assets/json/nba.js" defer></script>
-  </head>
-  <body>
-<style>
-  /*icon styles*/
-  .fi-social-facebook {
-    color: dodgerblue;
-    font-size: 2rem;
-  }
-  .fi-social-youtube {
-    color: red;
-    font-size: 2rem;
-  }
-  .fi-social-pinterest {
-    color: darkred;
-    font-size: 2rem;
-  }
-  i.fi-social-instagram {
-    color: brown;
-    font-size: 2rem;
-  }
-  i.fi-social-tumblr {
-    color: navy;
-    font-size: 2rem;
-  }
-  .fi-social-twitter {
-    color: skyblue;
-    font-size: 2rem;
-  }
-
-</style>
-
-<header>
-
-  <!-- Sub Navigation -->
-  <div class="top-bar">
-    <div class="top-bar-left">
-   
-       <ul class="menu">
-        <li id="nbaStat" class="sports-stat" data-stat="nba"><a href="#">NBA Stats</a></li>
-        <li id="mlbStat" class="sports-stat" data-stat="mlb"><a href="#">MLB Stats</a></li>
-        <li id="nflStat" class="sports-stat" data-stat="nfl"><a href="#"> NFL Stats</a></li>
-        <li id="ncaafbStat" class="sports-stat" data-stat="ncaafb"><a href="#">NCAAFB Stats</a></li>
-      </ul> 
-    </div>
-    <div class="top-bar-right">
-      <ul class="menu">
-        <li><input type="search" placeholder="Search"></li>
-        <li><button type="button" class="button">Search</button></li>
-      </ul>
-    </div>
-  </div>
-  <h1>Sports Trivia and Statistics</h1>
-
-  
-
-  <!-- logo and ad break -->
-  <div class="row">
-    <div class="medium-4 columns">
-      <img src="Companylogo.png" alt="company logo">
-    </div>
-    <div class="medium-8 columns">
-      <iframe src="http://free.timeanddate.com/countdown/i7djhi41/n179/cf112/cm0/cu4/ct0/cs0/ca0/cr0/ss0/cac000/cpc000/pc009/tc900/fn2/fs175/szw725/szh165/tatTime%20Left%20Until/tac000/tptTime%20since%20Event%20started%20in/tpc000/matNBA%20Starts/mac000/mpc000/iso2020-10-22T00:00:00" allowTransparency="true" frameborder="0" width="725" height="142"></iframe>
-
-    </div>
-  </div>
-  <!-- / logo and ad break -->
-
-  
-
-
-  <br>
-
-  <div class="title-bar" data-responsive-toggle="main-menu" data-hide-for="medium">
-    <button class="menu-icon" type="button" data-toggle></button>
-    <div class="title-bar-title">Menu</div>
-  </div>
-
-
-</header>
-
-<br>
-
-<div class="row">
-
-    <div id="q1"></div>
-    <div id="q2"></div>
-    <div id = "q3"></div>
-    <div id = "q4"></div>
-    <div id = "q5"></div>
-    <div id = "q6"></div>
- 
- 
- 
-  </div>
-</div>
-<section>
-  <div id= "nbastatistics"></div>
-   <div id= "mlbstatistics"></div>
-  <div id= "nflstatistics"></div>
-  <div id= "ncaafbstatistics"></div> 
+    <link rel="stylesheet" href="style.css">
+    <title>Sports login</title>
+</head>
+<body>
+    <video autoplay muted loop id="myVideo">
+        <source src="Assets/ 2657257.mp4" type="video/mp4">
+      </video>
+    <div class="col-4 container">
+        <h2>Sports Trivia Login</h2>
+        <!-- <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-green w3-large">Login</button>
+            <div id="id01" class="w3-modal">
+          <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px"> -->
+    
+            <!-- <div class="w3-center container"><br>
+              <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
+             
+            </div> -->
+            <form id="login" class="w3-container" action="/action_page.php">
+              <div class="w3-section">
+                <label><b>Username</b></label>
+                <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Username" name="usrname" required>
+                <label><b>Password</b></label>
+                <input class="w3-input w3-border" type="password" placeholder="Enter Password" name="psw" required>
+                <a class="w3-button w3-block w3-green w3-section w3-padding button" href="landing.html">Login</a>
+                <input class="w3-check w3-margin-top" type="checkbox" checked="checked"> Remember me
+              </div>
+            </form>
+            <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+              <button onclick="document.getElementById('id01').style.display='none'" type="button" class="w3-button w3-red">Cancel</button>
+              <span class="w3-right w3-padding w3-hide-small">Forgot <a href="#">password?</a></span>
+            </div>
   
   
-  
-  
-  </section>
-<hr>
-
-</footer>
-
-    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
-    <script>
-      $(document).foundation();
-    </script>
-    <script src="sports.js" defer></script>
-  </body>
+</body>
 </html>
