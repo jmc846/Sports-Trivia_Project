@@ -176,14 +176,14 @@ $(".sports-stat").on("click", function () {
 		case 'ncaafb':
 
 			showStats(resNCAAFB);
-			console.log(resNFL.players[1].full_name);
+			console.log(resNCAAFB.players[1].full_name);
 			for (let i = 1; i < 4; i++) {
 				let playerID = "#td" + i + "-player-name";
 				let teamID = "#td" + i + "-team";
 				let posID = "#td" + i + "-pos"
-				$(playerID).text(resNFL.players[i].full_name);
-				$(teamID).text(resNFL.name);
-				$(posID).text(resNFL.players[i].primary_position);
+				$(playerID).text(resNCAAFB.players[i].full_name);
+				$(teamID).text(resNCAAFB.name);
+				$(posID).text(resNCAAFB.players[i].primary_position);
 			}
 		default:
 			console.log("try again");
