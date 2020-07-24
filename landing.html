@@ -9,10 +9,17 @@
    
     <link rel="stylesheet" href="style.css">
     <script src="Assets/json/nba.js" defer></script>
+
+    <script src="Assets/json/mlb.js"></script>
+    <script src="Assets/json/nfl.js"></script>
+    <script src="Assets/json/ncaafb.js"></script>
+
+
     <script src="sports.js" defer></script>
     <script src="count-down.js" defer></script>
   </head>
   <body>
+
 <style>
   /*icon styles*/
   .fi-social-facebook {
@@ -41,6 +48,7 @@
   }
 
 </style>
+
 
 <header class="site-width-limit">
   <!-- Sub Navigation -->
@@ -156,6 +164,44 @@
   </div>
   <!-- / logo and ad break -->
   <br>
+
+ 
+</header>
+
+<br>
+
+        <div class="Timer">
+            <div class="card">
+                <div class="card-header">
+                                      <h1><span id="seconds-left"></span></h1>
+
+
+                    <p id="timer"></p>
+                    <div id="counter"></div>
+                    <div class="card-body">
+                        <div id="question-container" class="display">
+                           <div id="col-lg-4"></div> 
+                            
+
+                            <div id="question-title"></div>
+                            <button id="begin" class="testkhowledge"> Test Sports knowledge</button>
+                            <button id="a" class="useranswer">Option A</button>
+                            <button id="b" class="useranswer">Option B</button>
+                            <button id="c" class="useranswer">Option C</button>
+                            <button id="d" class="useranswer">Option D</button>               
+                            <form method="post">
+                                
+                                </select> 
+                              
+                           
+
+                                                               <br />
+ <br />
+                    <div class="card-footer"> </div>
+                    <button id="score" class="btn">Generate SCORE</button>
+                   <div id="showscore"></div>
+                </div>
+
   <div class="title-bar" data-responsive-toggle="main-menu" data-hide-for="medium">
     <button class="menu-icon" type="button" data-toggle></button>
     <div class="title-bar-title">Menu</div>

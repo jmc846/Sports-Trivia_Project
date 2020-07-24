@@ -1,4 +1,69 @@
 //* variables that are global on top */
+
+var timer = 120;
+var timerInterval = setInterval(updateTimer, 1000);
+var timerExpired = setTimeout(generateScore, 0000);
+var currentQuestionIndex = 0;
+var correctAnswerCount = 0;
+var wrongAnswerCount = 0;
+var userAnswer = document.querySelector('#useranswer')
+//selectors in the dom
+var timerEl = document.getElementById("counter");
+var questionTitle = document.getElementById('question-title');
+var begin = document.getElementById('begin');
+var a = document.getElementById('a');
+var b = document.getElementById('b');
+var c = document.getElementById('c');
+var d = document.getElementById('d');
+var questions = [{
+	q: "Who currently leads the NBA in assists?",
+	a: "a- russel westbrook,",
+	b: "b- lebron james,",
+	c: "c- kyrie Irving",
+	d: "d- Damian Lillard,",
+	rightAnswer: 'b',
+},
+
+{
+	q: "Who curently leads the nba in points  PPG?",
+	a: "a -Bradley beal,",
+	b: "b - Lebron James,",
+	c: "c- James Harden,",
+	d: "d- Trae Young,",
+	rightAnswer: 'c',
+
+},
+
+{
+	q: "Who currently leads the NBA in rebounds with over 15 per game?",
+	a: "a- Andre Drummond,",
+	b: "b- Gianis,",
+	c: "c- Anthony Davis",
+	d: "d-Tacko ",
+	rightAnswer: "b",
+
+},
+
+{
+	q: "What team is currently in first place in the Eastern Division of the NBA?",
+	a: "a-Raptors",
+	b: "b-Milwaukee Bucks,",
+	c: "c-Boston Celtics,",
+	d: "d-Philadelphia 76ers,",
+	rightAnswer: "b",
+
+},
+
+{
+	q: "The New York Knicks will win a playoff series within the next 10 years?",
+	a: "TRUE,",
+	b: "FALSE,",
+	c: "NOT THIS CENTURY,",
+	d: "FIRE DOLAN,",
+	rightAnswer: "d",
+
+}];
+
 var questionsArr = [{
 		question: "Who currently leads the NBA in assists? a- russel westbrook, b- lebron james, c- kyrie Irving"
 	},
@@ -15,6 +80,7 @@ var questionsArr = [{
 		question: "The New York Knicks will win a playoff series within the next 10 years? a -True, b -False"
 	}
 ]
+
 
 var rightAnswers = $(".rightAnswers");
 var currentTime = $("<div>").append(currentTime);
@@ -54,6 +120,28 @@ var nflStat = "https://api.sportradar.us/nfl-ot1/seasontd/2018/REG/teams/9735489
 
 var compareAnswers = {};
 // var responseData;
+
+function showStats(queryURL) {
+	var params = {
+		mlbStat,
+		nbaStat,
+		ncaafbStat,
+		nflStat
+	};
+	params.target = queryUrl;
+
+
+	console.log("queryURL", queryURL)
+	$.ajax({
+		url: "https://greve-chaise-90856.herokuapp.com/proxy/api/v1?" + $.param(params),
+		method: "GET",
+	})
+		// Response for the ajax function
+		.then(function (response) {
+			console.log("above is response");
+		});
+}
+
  function showStats(queryURL) {
  	var params = {
 		mlbStat,
@@ -74,6 +162,7 @@ var compareAnswers = {};
  			console.log("above is response");
  		});
  }
+
 /* event handling functions , all your button clicking*/
 // event to display questions, scroll stats, display results
 $(".sports-stat").on("click", function () {
@@ -86,31 +175,42 @@ $(".sports-stat").on("click", function () {
 	switch (sport) {
 
 		case 'nba':
+
+			showStats(resNBA);
+			console.log(resNBA.players[1].full_name);
+			for (let i = 1; i < 4; i++) {
+				let playerID = "#td" + i + "-player-name";
+
 			 showStats(resNBA);
 			console.log(resNBA.players[1].full_name);
 			for(let i = 1; i < 4; i++){
-				let playerID = "#td" +i + "-player-name";
+				let playerID = "#td" +i + "-player-name"
 				let teamID = "#td" + i + "-team";
 				let posID = "#td" + i + "-pos"
 				$(playerID).text(resNBA.players[i].full_name);
 				$(teamID).text(resNBA.name);
 				$(posID).text(resNBA.players[i].primary_position);
 			}
-			
+
 			//console.log(queryUrl)
 			break;
 		case 'mlb':
 			showStats(resMLB);
 			console.log(resMLB.players[1].full_name);
+
+			for (let i = 1; i < 4; i++) {
+				let playerID = "#td" + i + "-player-name";
+=======
 			for(let i = 1; i < 4; i++){
 				let playerID = "#td" +i + "-player-name";
+
 				let teamID = "#td" + i + "-team";
 				let posID = "#td" + i + "-pos"
 				$(playerID).text(resMLB.players[i].full_name);
 				$(teamID).text(resMLB.name);
 				$(posID).text(resMLB.players[i].primary_position);
 			}
-			
+
 		// 	break;
 		// case 'nfl':
 
@@ -125,4 +225,76 @@ $(".sports-stat").on("click", function () {
 		default:
 			console.log("try again");
 	}
+document.addEventListener("score", function () { })  //add a to the dom..
+function generateScore() {
+	console.log("HEY THERE I WORK");
+	showscore.innerHTML = `${correctAnswerCount / wrongAnswerCount} score. `
+
+
+}
+function updateTimer() {
+	timerEl.innerHTML = `${timer} seconds left.`
+	timer = timer - 1;
+}
+document.addEventListener("begin", function () { })  //add a to the dom..
+function displayCurrentQuestion() {
+	console.log("HEY THERE I WORK");
+	questionTitle.innerHTML = questions[currentQuestionIndex].q;
+
+	a.innerHTML = questions[currentQuestionIndex].a
+	a.addEventListener('click', () => { checkAnswer('a') })
+
+	b.innerHTML = questions[currentQuestionIndex].b
+	b.addEventListener('click', () => { checkAnswer('b') })
+	console.log("HEY THERE I WORK TOO")
+	c.innerHTML = questions[currentQuestionIndex].c
+	c.addEventListener('click', () => { checkAnswer('c') })
+
+	d.innerHTML = questions[currentQuestionIndex].d
+	d.addEventListener('click', () => { checkAnswer('d') })
+}
+
+//
+displayCurrentQuestion()
+updateTimer()
+
+
+//call display currentQuestion
+function checkAnswer(userAnswer) {
+	//compare user answer to current question right answer.
+	if (document.querySelector('#userAnswer') === questions[currentQuestionIndex].rightAnswer) {
+		correctAnswerCount++;
+		//increment correctAnswerCount if they are the same.
+		currentQuestionIndex++;
+		//increment currentQuestionIndex by 1
+	} else (document.querySelector('#userAnswer') !== questions[currentQuestionIndex].rightAnswer); {
+		wrongAnswerCount
+		currentQuestionIndex++;
+		timer - 10
+
+	}
+	displayCurrentQuestion();
+
+	// checkAnswer()
+	setInterval(updateTimer, 4000);
+
+
+	generateScore();
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 })
+
