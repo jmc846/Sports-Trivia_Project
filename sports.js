@@ -148,7 +148,7 @@ $(".sports-stat").on("click", function () {
 			break;
 		case 'mlb':
 			showStats(resMLB);
-			console.log(resMLB.players[1].full_name);
+			console.log(resMLB.players[4].full_name);
 			for (let i = 1; i < 4; i++) {
 				let playerID = "#td" + i + "-player-name";
 				let teamID = "#td" + i + "-team";
@@ -158,17 +158,33 @@ $(".sports-stat").on("click", function () {
 				$(posID).text(resMLB.players[i].primary_position);
 			}
 
-		// 	break;
-		// case 'nfl':
+			break;
+		case 'nfl':
 
-		// 	showStats(nflStat)
-		// 	document.querySelector("#nflstatistics").append("Team", resNFL)
-		// 	break;
-		// case 'ncaafb':
+			showStats(resNFL);
+			console.log(resNFL.players[1].full_name);
+			for (let i = 1; i < 4; i++) {
+				let playerID = "#td" + i + "-player-name";
+				let teamID = "#td" + i + "-team";
+				let posID = "#td" + i + "-pos"
+				$(playerID).text(resNFL.players[i].full_name);
+				$(teamID).text(resNFL.name);
+				$(posID).text(resNFL.players[i].primary_position);
+			}
 
-		// 	showStats(ncaafbStat)
-		// 	document.querySelector("#ncaafbstatistics").append("Team", resNCAAFB)
-		// 	break;
+			break;
+		case 'ncaafb':
+
+			showStats(resNCAAFB);
+			console.log(resNFL.players[1].full_name);
+			for (let i = 1; i < 4; i++) {
+				let playerID = "#td" + i + "-player-name";
+				let teamID = "#td" + i + "-team";
+				let posID = "#td" + i + "-pos"
+				$(playerID).text(resNFL.players[i].full_name);
+				$(teamID).text(resNFL.name);
+				$(posID).text(resNFL.players[i].primary_position);
+			}
 		default:
 			console.log("try again");
 	}
