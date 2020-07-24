@@ -1,15 +1,70 @@
 //* variables that are global on top */
-var questionsArr = [{ question: "Who currently leads the NBA in assists? a- russel westbrook, b- lebron james, c- kyrie Irving" },
-{ question: "Who curently leads the nba in points  PPG? a -Bradley beal, b - Lebron James, c- James Harden" },
-{ question: "Who currently leads the NBA in rebounds with over 15 per game? a- Andre Drummond,  b- Gianis,  c- Anthony Davis" },
-{ question: "What team is currently in first place in the Eastern Division of the NBA? a-Raptors, b-Milwaukee Bucks, c-Boston Celtics" },
-{ question: "The New York Knicks will win a playoff series within the next 10 years? a -True, b -False" }]
-var resNBA= document.querySelector('resNBA');
-var resNFL = document.querySelector('resNFL');
-var resMLB= document.querySelector('resMLB');
-var resNCAAFB= document.querySelector('resNCAAFB');
+var timer = 120;
+var timerInterval = setInterval(updateTimer, 1000);
+var timerExpired = setTimeout(generateScore, 0000);
+var currentQuestionIndex = 0;
+var correctAnswerCount = 0;
+var wrongAnswerCount = 0;
+var userAnswer = document.querySelector('#useranswer')
+//selectors in the dom
+var timerEl = document.getElementById("counter");
+var questionTitle = document.getElementById('question-title');
+var begin = document.getElementById('begin');
+var a = document.getElementById('a');
+var b = document.getElementById('b');
+var c = document.getElementById('c');
+var d = document.getElementById('d');
+var questions = [{
+	q: "Who currently leads the NBA in assists?",
+	a: "a- russel westbrook,",
+	b: "b- lebron james,",
+	c: "c- kyrie Irving",
+	d: "d- Damian Lillard,",
+	rightAnswer: 'b',
+},
+
+{
+	q: "Who curently leads the nba in points  PPG?",
+	a: "a -Bradley beal,",
+	b: "b - Lebron James,",
+	c: "c- James Harden,",
+	d: "d- Trae Young,",
+	rightAnswer: 'c',
+
+},
+
+{
+	q: "Who currently leads the NBA in rebounds with over 15 per game?",
+	a: "a- Andre Drummond,",
+	b: "b- Gianis,",
+	c: "c- Anthony Davis",
+	d: "d-Tacko ",
+	rightAnswer: "b",
+
+},
+
+{
+	q: "What team is currently in first place in the Eastern Division of the NBA?",
+	a: "a-Raptors",
+	b: "b-Milwaukee Bucks,",
+	c: "c-Boston Celtics,",
+	d: "d-Philadelphia 76ers,",
+	rightAnswer: "b",
+
+},
+
+{
+	q: "The New York Knicks will win a playoff series within the next 10 years?",
+	a: "TRUE,",
+	b: "FALSE,",
+	c: "NOT THIS CENTURY,",
+	d: "FIRE DOLAN,",
+	rightAnswer: "d",
+
+}];
+
 var rightAnswers = $(".rightAnswers");
- var currentTime = $("<div>").append(currentTime)
+var currentTime = $("<div>").append(currentTime);
 
 // API info NYT
 var queryUrl = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=election&api-key=76F4by9ktUvjFKC7kIl7vqi7REdEE6JA";
@@ -47,78 +102,142 @@ var nflStat = "https://api.sportradar.us/nfl-ot1/seasontd/2018/REG/teams/9735489
 var compareAnswers = {};
 // var responseData;
 function showStats(queryURL) {
-	var params = {mlbStat, nbaStat, ncaafbStat, nflStat};
+	var params = {
+		mlbStat,
+		nbaStat,
+		ncaafbStat,
+		nflStat
+	};
 	params.target = queryUrl;
 
 
 	console.log("queryURL", queryURL)
 	$.ajax({
-
 		url: "https://greve-chaise-90856.herokuapp.com/proxy/api/v1?" + $.param(params),
 		method: "GET",
 	})
 		// Response for the ajax function
 		.then(function (response) {
-			
 			console.log("above is response");
-		}
-		);
-	}
-/* call back functions*/
-// Here we loop through our array using the .each() method and append a new div with each iteration/questions
-const displayQuiz = function () {
-
-	for (var i = 0; i < questionsArr.length; i++) {
-		var divID = "#q" + (i + 1);
-		var quizItem = $(divID);
-		var questionList = questionsArr[i].question;
-		console.log(questionList);
-		document.querySelector("#quizitem").append(questionList)
-	
-		
-	}
+		});
 }
-displayQuiz();
-
 /* event handling functions , all your button clicking*/
 // event to display questions, scroll stats, display results
 $(".sports-stat").on("click", function () {
-	
-	
+
+
 	var sport = $(this).attr("data-stat");
 	console.log(sport);
 	//switch()
 	console.log("I see you");
-	switch(sport){
+	switch (sport) {
 
 		case 'nba':
-			if (document.getElementById(".nbaStat"),showStats(nbaStat))
-			showStats(nbaStat)
-			document.querySelector("#nbastatistics").append("Team",resNBA)
-		    console.log(queryUrl)
+			showStats(resNBA);
+			console.log(resNBA.players[1].full_name);
+			for (let i = 1; i < 4; i++) {
+				let playerID = "#td" + i + "-player-name";
+				let teamID = "#td" + i + "-team";
+				let posID = "#td" + i + "-pos"
+				$(playerID).text(resNBA.players[i].full_name);
+				$(teamID).text(resNBA.name);
+				$(posID).text(resNBA.players[i].primary_position);
+			}
+
+			//console.log(queryUrl)
 			break;
 		case 'mlb':
-			if (document.getElementById(".mlbStat"),showStats(mlbStat))
-			showStats(mlbStat)
-			document.querySelector("#mlbstatistics").append("Team",resMLB)
-			break;	
-		 	case 'nfl':
-				if (document.getElementById(".nflStat"),showStats(nflStat))
-				showStats(nflStat)
-				document.querySelector("#nflstatistics").append("Team",resNFL)
-				break;
-				case 'ncaafb':
-					if (document.getElementById(".ncaafbStat"),showStats(ncaafbStat))
-				 showStats(ncaafbStat)
-				 document.querySelector("#ncaafbstatistics").append("Team",resNCAAFB)
-		 		break;
-		 default:
-			console.log("try again");
+			showStats(resMLB);
+			console.log(resMLB.players[1].full_name);
+			for (let i = 1; i < 4; i++) {
+				let playerID = "#td" + i + "-player-name";
+				let teamID = "#td" + i + "-team";
+				let posID = "#td" + i + "-pos"
+				$(playerID).text(resMLB.players[i].full_name);
+				$(teamID).text(resMLB.name);
+				$(posID).text(resMLB.players[i].primary_position);
 			}
-});
+
+		// 	break;
+		// case 'nfl':
+
+		// 	showStats(nflStat)
+		// 	document.querySelector("#nflstatistics").append("Team", resNFL)
+		// 	break;
+		// case 'ncaafb':
+
+		// 	showStats(ncaafbStat)
+		// 	document.querySelector("#ncaafbstatistics").append("Team", resNCAAFB)
+		// 	break;
+		default:
+			console.log("try again");
+	}
+})
+document.addEventListener("score", function () { })  //add a to the dom..
+function generateScore() {
+	console.log("HEY THERE I WORK");
+	showscore.innerHTML = `${correctAnswerCount / wrongAnswerCount} score. `
 
 
-		
+}
+function updateTimer() {
+	timerEl.innerHTML = `${timer} seconds left.`
+	timer = timer - 1;
+}
+document.addEventListener("begin", function () { })  //add a to the dom..
+function displayCurrentQuestion() {
+	console.log("HEY THERE I WORK");
+	questionTitle.innerHTML = questions[currentQuestionIndex].q;
+
+	a.innerHTML = questions[currentQuestionIndex].a
+	a.addEventListener('click', () => { checkAnswer('a') })
+
+	b.innerHTML = questions[currentQuestionIndex].b
+	b.addEventListener('click', () => { checkAnswer('b') })
+	console.log("HEY THERE I WORK TOO")
+	c.innerHTML = questions[currentQuestionIndex].c
+	c.addEventListener('click', () => { checkAnswer('c') })
+
+	d.innerHTML = questions[currentQuestionIndex].d
+	d.addEventListener('click', () => { checkAnswer('d') })
+}
+
+//
+displayCurrentQuestion()
+updateTimer()
+
+
+//call display currentQuestion
+function checkAnswer(userAnswer) {
+	//compare user answer to current question right answer.
+	if (document.querySelector('#userAnswer') === questions[currentQuestionIndex].rightAnswer) {
+		correctAnswerCount++;
+		//increment correctAnswerCount if they are the same.
+		currentQuestionIndex++;
+		//increment currentQuestionIndex by 1
+	} else (document.querySelector('#userAnswer') !== questions[currentQuestionIndex].rightAnswer); {
+		wrongAnswerCount
+		currentQuestionIndex++;
+		timer - 10
+
+	}
+	displayCurrentQuestion();
+
+	// checkAnswer()
+	setInterval(updateTimer, 4000);
+
+
+	generateScore();
+
+}
+
+
+
+
+
+
+
+
 
 
 
