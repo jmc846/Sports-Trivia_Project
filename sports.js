@@ -190,17 +190,19 @@ $(".sports-stat").on("click", function () {
 				$(playerID).text(resNBA.players[i].full_name);
 				$(teamID).text(resNBA.name);
 				$(posID).text(resNBA.players[i].primary_position);
-			}
+			};
 
-			//console.log(queryUrl)
+			console.log(queryUrl)
 			break;
+			
+
 		case 'mlb':
 			showStats(resMLB);
 			console.log(resMLB.players[1].full_name);
 
 			for (let i = 1; i < 4; i++) {
 				let playerID = "#td" + i + "-player-name";
-=======
+
 			for(let i = 1; i < 4; i++){
 				let playerID = "#td" +i + "-player-name";
 
@@ -222,7 +224,7 @@ $(".sports-stat").on("click", function () {
 		// 	showStats(ncaafbStat)
 		// 	document.querySelector("#ncaafbstatistics").append("Team", resNCAAFB)
 		// 	break;
-		default:
+		// default:
 			console.log("try again");
 	}
 document.addEventListener("score", function () { })  //add a to the dom..
