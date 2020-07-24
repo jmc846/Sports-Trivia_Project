@@ -1,4 +1,5 @@
 //* variables that are global on top */
+
 var timer = 120;
 var timerInterval = setInterval(updateTimer, 1000);
 var timerExpired = setTimeout(generateScore, 0000);
@@ -63,6 +64,24 @@ var questions = [{
 
 }];
 
+var questionsArr = [{
+		question: "Who currently leads the NBA in assists? a- russel westbrook, b- lebron james, c- kyrie Irving"
+	},
+	{
+		question: "Who curently leads the nba in points  PPG? a -Bradley beal, b - Lebron James, c- James Harden"
+	},
+	{
+		question: "Who currently leads the NBA in rebounds with over 15 per game? a- Andre Drummond,  b- Gianis,  c- Anthony Davis"
+	},
+	{
+		question: "What team is currently in first place in the Eastern Division of the NBA? a-Raptors, b-Milwaukee Bucks, c-Boston Celtics"
+	},
+	{
+		question: "The New York Knicks will win a playoff series within the next 10 years? a -True, b -False"
+	}
+]
+
+
 var rightAnswers = $(".rightAnswers");
 var currentTime = $("<div>").append(currentTime);
 
@@ -101,6 +120,7 @@ var nflStat = "https://api.sportradar.us/nfl-ot1/seasontd/2018/REG/teams/9735489
 
 var compareAnswers = {};
 // var responseData;
+
 function showStats(queryURL) {
 	var params = {
 		mlbStat,
@@ -121,6 +141,28 @@ function showStats(queryURL) {
 			console.log("above is response");
 		});
 }
+
+ function showStats(queryURL) {
+ 	var params = {
+		mlbStat,
+ 		nbaStat,
+ 		ncaafbStat,
+ 		nflStat
+ 	};
+ 	params.target = queryUrl;
+
+
+ 	console.log("queryURL", queryURL)
+ 	$.ajax({
+ 			url: "https://greve-chaise-90856.herokuapp.com/proxy/api/v1?" + $.param(params),
+ 			method: "GET",
+ 		})
+ 		// Response for the ajax function
+ 		.then(function (response) {
+ 			console.log("above is response");
+ 		});
+ }
+
 /* event handling functions , all your button clicking*/
 // event to display questions, scroll stats, display results
 $(".sports-stat").on("click", function () {
@@ -133,10 +175,16 @@ $(".sports-stat").on("click", function () {
 	switch (sport) {
 
 		case 'nba':
+
 			showStats(resNBA);
 			console.log(resNBA.players[1].full_name);
 			for (let i = 1; i < 4; i++) {
 				let playerID = "#td" + i + "-player-name";
+
+			 showStats(resNBA);
+			console.log(resNBA.players[1].full_name);
+			for(let i = 1; i < 4; i++){
+				let playerID = "#td" +i + "-player-name"
 				let teamID = "#td" + i + "-team";
 				let posID = "#td" + i + "-pos"
 				$(playerID).text(resNBA.players[i].full_name);
@@ -149,8 +197,13 @@ $(".sports-stat").on("click", function () {
 		case 'mlb':
 			showStats(resMLB);
 			console.log(resMLB.players[1].full_name);
+
 			for (let i = 1; i < 4; i++) {
 				let playerID = "#td" + i + "-player-name";
+=======
+			for(let i = 1; i < 4; i++){
+				let playerID = "#td" +i + "-player-name";
+
 				let teamID = "#td" + i + "-team";
 				let posID = "#td" + i + "-pos"
 				$(playerID).text(resMLB.players[i].full_name);
@@ -172,7 +225,6 @@ $(".sports-stat").on("click", function () {
 		default:
 			console.log("try again");
 	}
-})
 document.addEventListener("score", function () { })  //add a to the dom..
 function generateScore() {
 	console.log("HEY THERE I WORK");
@@ -242,4 +294,7 @@ function checkAnswer(userAnswer) {
 
 
 
+
+
+})
 
