@@ -1,6 +1,6 @@
-body{
+ body{
 background: url(https://www.pexels.com/video/aerial-footage-of-a-football-stadium-in-a-city-2657271/;)
-} */
+}  
 
 .myVideo {
 
@@ -11,13 +11,20 @@ background: url(https://www.pexels.com/video/aerial-footage-of-a-football-stadiu
   min-height: 100%;
 }
 
-/* #parent {
-  display: table;
-  width: 100%;
-} */
 
-/* #form_login {
-  align
+
+
+ #statbox{
+margin-top: 55px; 
+width: 800px;
+height: 800px;
+margin-left: 550px;
+margin-right: 55px;
+
+}
+
+ /* #form_login {
+ 
   position: absolute;
   display: table-cell;
   text-align: center;
@@ -33,8 +40,8 @@ background: url(https://www.pexels.com/video/aerial-footage-of-a-football-stadiu
   width: 30%;
   padding: 20px;
   margin-left: 800px;
-}
-.fangraphs-image {
+} */ */
+/* .fangraphs-image {
   height: 200px;
 }
 .iframe-container{
@@ -44,13 +51,7 @@ background: url(https://www.pexels.com/video/aerial-footage-of-a-football-stadiu
   height: 0;
   right: 200px
 }
-.iframe-container iframe{
-  position: absolute;
-  top:0;
-  left: 0;
-  width: 90%;
-  height: 100%;
-}
+
 
 body {
   background-color: #f2f1ed;
@@ -60,9 +61,9 @@ body {
 a {
   text-decoration: none;
   color: #1a1a1a;
-}
+} */
 
-h1 {
+/* h1 {
   margin-bottom: 60px;
   text-align: center;
   font: 300 2.25em "Lato";
@@ -86,8 +87,8 @@ h2 strong {
 .countdown {
   width: 720px;
   margin: 0 auto;
-}
-.countdown .bloc-time {
+} */
+/* .countdown .bloc-time {
   float: left;
   margin-right: 45px;
   text-align: center;
@@ -165,8 +166,8 @@ h2 strong {
   width: 100%;
   height: 50%;
   background-color: rgba(0, 0, 0, 0.02);
-}
-.countdown .figure .bottom-back {
+} */
+/* .countdown .figure .bottom-back {
   z-index: 2;
   top: 0;
   height: 50%;
@@ -185,8 +186,8 @@ h2 strong {
   left: 0;
   right: 0;
   margin: auto;
-}
-.countdown .figure .top,
+} */
+/* .countdown .figure .top,
 .countdown .figure .top-back {
   height: 50%;
   overflow: hidden;
@@ -210,8 +211,8 @@ h2 strong {
   -moz-border-radius-bottomright: 10px;
   -webkit-border-bottom-right-radius: 10px;
   border-bottom-right-radius: 10px;
-}
-.countdown .figure .top-back span {
+} */
+/* .countdown .figure .top-back span {
   position: absolute;
   top: -100%;
   left: 0;
@@ -225,34 +226,44 @@ h2 strong {
   padding-right: 50px;
   margin-left: auto;
   margin-right: auto;
-}
+} */
 
-    position: fixed;
+    /* position: fixed;
     right: 0;
     bottom: 0;
     min-width: 100%;
-    min-height: 100%;
+    min-height: 100%; */
   
 
-  /* #parent {
+   #parent {
     display: table;
     width: 100%;
- } */
+ } 
 
- /* #form_login {
-    align
+#site-width-limit{
+
+  text-decoration-color:black;
+  font-weight: 800;
+}
+
+  #form_login {
+    
     position: absolute;
     display: table-cell;
     text-align: center;
     vertical-align: middle;
- } */
+ }
+ .site-width-limit{
+
+  text-decoration-color: black;
+ }
 
   .container {
     text-align: center;
     position: fixed;
     top: 375px;
-    background: rgba(0, 0, 0, 0.5);
-    color: #f1f1f1;
+    /* background: rgba(0, 0, 0, 0.5);
+    color: #f1f1f1; */
     width: 30%;
     padding: 20px;
     margin-left: 800px;
@@ -440,13 +451,13 @@ h2 strong {
     left: 0;
     right: 0;
     margin: auto;
-  }
-  
+  } */
+/*   
   .site-width-limit {
     max-width: 1200px;
     padding-left: 50px;
     padding-right: 50px;
     margin-left: auto;
     margin-right: auto;
-  }
-
+  } */
+ 

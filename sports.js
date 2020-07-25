@@ -101,24 +101,26 @@ var nflStat = "https://api.sportradar.us/nfl-ot1/seasontd/2018/REG/teams/9735489
 
 var compareAnswers = {};
 // var responseData;
-function showStats(queryURL) {
-	var params = {
-		mlbStat,
-		nbaStat,
-		ncaafbStat,
-		nflStat
-	};
-	params.target = queryUrl;
+function showStats(qUrl) {
+	// var params = {
+	// 	mlbStat,
+	// 	nbaStat,
+	// 	ncaafbStat,
+	// 	nflStat
+	// };
+	var params = {};
+	params.target = qUrl;
 
 
-	console.log("queryURL", queryURL)
-	$.ajax({
+	console.log("queryURL", qUrl)
+	return $.ajax({
 		url: "https://greve-chaise-90856.herokuapp.com/proxy/api/v1?" + $.param(params),
 		method: "GET",
 	})
 		// Response for the ajax function
 		.then(function (response) {
 			console.log("above is response");
+			return response;
 		});
 }
 /* event handling functions , all your button clicking*/
@@ -133,7 +135,23 @@ $(".sports-stat").on("click", function () {
 	switch (sport) {
 
 		case 'nba':
-			showStats(resNBA);
+			showStats(nbaStat).then(
+				function(response){
+					console.log(response);
+					window.dResponse = response;
+					for (let i = 1; i < 4; i++) {
+						let playerID = "#td" + i + "-player-name";
+						let teamID = "#td" + i + "-team";
+						let posID = "#td" + i + "-pos"
+						$(playerID).text(response.players[i].full_name);
+						// $(teamID).text(resNBA.name);
+						// $(posID).text(resNBA.players[i].primary_position);
+					}
+
+				
+console.log("--")
+				}
+			);
 			console.log(resNBA.players[1].full_name);
 			for (let i = 1; i < 4; i++) {
 				let playerID = "#td" + i + "-player-name";
